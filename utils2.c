@@ -6,7 +6,7 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:13:25 by ahamrad           #+#    #+#             */
-/*   Updated: 2023/10/09 05:18:14 by ahamrad          ###   ########.fr       */
+/*   Updated: 2023/10/10 06:30:43 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,12 @@ size_t	get_current_time(void)
 	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
+int	ft_usleep(size_t ms)
+{
+	size_t	t;
+
+	t = get_current_time();
+	while (get_current_time() - t < ms)
+		usleep(400);
+	return (0);
+}

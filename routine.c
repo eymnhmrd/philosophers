@@ -6,15 +6,16 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 05:26:53 by ahamrad           #+#    #+#             */
-/*   Updated: 2023/10/10 06:38:08 by ahamrad          ###   ########.fr       */
+/*   Updated: 2023/10/11 18:23:03 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
 void	philo_print(t_philo *philo, char *str)
 {
 	pthread_mutex_lock(&philo->vars_ptr->mt_print);
-	printf(str, (get_current_time() - philo->vars_ptr->start_time), philo->id);	
+	printf(str, (get_current_time() - philo->vars_ptr->start_time), philo->id);
 	pthread_mutex_unlock(&philo->vars_ptr->mt_print);
 }
 
@@ -41,7 +42,6 @@ void	unlock_forks(t_philo *philo)
 	pthread_mutex_unlock(philo->l_fork);
 	pthread_mutex_unlock(&philo->r_fork);
 }
-
 
 void	routine(t_philo *philo)
 {

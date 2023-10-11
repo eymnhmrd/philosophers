@@ -6,20 +6,20 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:18:55 by ahamrad           #+#    #+#             */
-/*   Updated: 2023/10/09 04:57:11 by ahamrad          ###   ########.fr       */
+/*   Updated: 2023/10/11 18:26:41 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int		ft_isdigit(char c)
+int	ft_isdigit(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
 }
 
-int		ft_check_number(char *number)
+int	ft_check_number(char *number)
 {
 	int		i;
 
@@ -33,9 +33,10 @@ int		ft_check_number(char *number)
 	return (0);
 }
 
-int		ft_check_arguments(char **argv)
+int	ft_check_arguments(char **argv)
 {
-	if (ft_atoi(argv[1]) > 200 || ft_atoi(argv[1]) <= 0 || ft_check_number(argv[1]) == 1)
+	if (ft_atoi(argv[1]) > 200 || ft_atoi(argv[1]) <= 0 
+		|| ft_check_number(argv[1]) == 1)
 		return (write(2, "Invalid number of philosophers\n", 28), 1);
 	if (ft_atoi(argv[2]) < 60 || ft_check_number(argv[2]) == 1)
 		return (write(2, "Invalid number of time to die\n", 30), 1);
@@ -47,6 +48,3 @@ int		ft_check_arguments(char **argv)
 		return (write(2, "Invalid number of times each philosopher must eat\n", 50), 1);
 	return (0);
 }
-
-
-

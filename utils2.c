@@ -6,7 +6,7 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:13:25 by ahamrad           #+#    #+#             */
-/*   Updated: 2023/10/10 06:30:43 by ahamrad          ###   ########.fr       */
+/*   Updated: 2023/10/11 18:22:12 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	get_current_time(void)
 {
-	struct timeval tv;
+	struct timeval	tv;
 
 	if (gettimeofday(&tv, NULL) == -1)
 		return (write(2, "gettimeofday error\n", 19), 0);

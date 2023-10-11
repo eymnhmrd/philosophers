@@ -6,7 +6,7 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:01:20 by ahamrad           #+#    #+#             */
-/*   Updated: 2023/10/10 06:35:58 by ahamrad          ###   ########.fr       */
+/*   Updated: 2023/10/11 18:27:13 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_vars(t_vars *var, char **argv)
 		var->num_times_to_eat = -1;
 }
 
-int		init_philos(t_vars *var, char **argv)
+int	init_philos(t_vars *var, char **argv)
 {
 	int		i;
 
@@ -55,8 +55,3 @@ int		init_philos(t_vars *var, char **argv)
 	}
 	return (0);
 }
-
-
-
-
-

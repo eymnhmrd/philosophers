@@ -6,7 +6,7 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:13:25 by ahamrad           #+#    #+#             */
-/*   Updated: 2023/10/11 18:22:12 by ahamrad          ###   ########.fr       */
+/*   Updated: 2023/10/12 02:47:49 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ int	ft_usleep(size_t ms)
 
 	t = get_current_time();
 	while (get_current_time() - t < ms)
-		usleep(400);
+		usleep(500);
 	return (0);
 }
+
+// void	ft_check_death(t_vars *var)
+// {
+// 	int	i;
+
+	
+// }

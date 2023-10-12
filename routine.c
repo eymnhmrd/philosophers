@@ -6,7 +6,7 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 05:26:53 by ahamrad           #+#    #+#             */
-/*   Updated: 2023/10/11 18:23:03 by ahamrad          ###   ########.fr       */
+/*   Updated: 2023/10/12 02:27:55 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	routine(t_philo *philo)
 		lock_forks(philo);
 		philo_print(philo, EAT);
 		ft_usleep(philo->vars_ptr->time_to_eat);
+		unlock_forks(philo);
 		if (philo->vars_ptr->num_times_to_eat != -1)
 			philo->meals_number++;
-		unlock_forks(philo);
 		if (philo->vars_ptr->num_times_to_eat == philo->meals_number)
 			philo->vars_ptr->satisfaction++;
 		philo_print(philo, SLEEP);

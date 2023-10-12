@@ -6,7 +6,7 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:18:55 by ahamrad           #+#    #+#             */
-/*   Updated: 2023/10/11 18:26:41 by ahamrad          ###   ########.fr       */
+/*   Updated: 2023/10/11 18:48:12 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ int	ft_check_arguments(char **argv)
 	if (ft_atoi(argv[4]) < 60 || ft_check_number(argv[4]) == 1)
 		return (write(2, "Invalid number of time to sleep\n", 32), 1);
 	if (argv[5] && (ft_atoi(argv[5]) <= 0 || ft_check_number(argv[5]) == 1))
-		return (write(2, "Invalid number of times each philosopher must eat\n", 50), 1);
+		return (write(2, MSG_ERROR, 50), 1);
 	return (0);
 }

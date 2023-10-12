@@ -6,7 +6,7 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 04:18:57 by ahamrad           #+#    #+#             */
-/*   Updated: 2023/10/11 18:26:00 by ahamrad          ###   ########.fr       */
+/*   Updated: 2023/10/11 19:08:04 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	main(int argc, char **argv)
 		return (write(2, "Wrong argument number\n", 22), 1);
 	if (ft_check_arguments(argv) == 1)
 		return (1);
-	init_philos(&var, argv);
+	if (init_philos(&var, argv) == 1)
+		return (1);
 	while (1);
 	return (0);
 }

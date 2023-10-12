@@ -6,23 +6,11 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:23:21 by ahamrad           #+#    #+#             */
-/*   Updated: 2023/10/09 02:02:01 by ahamrad          ###   ########.fr       */
+/*   Updated: 2023/10/11 23:40:08 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
-}
 
 long	ft_atoi(char *str)
 {
@@ -46,7 +34,7 @@ long	ft_atoi(char *str)
 		res = res * 10 + str[i] - '0';
 		i++;
 	}
-	if (res * sign > INT_MAX)
+	if (res > 2147483647)
 		return (-1);
 	return (res * sign);
 }

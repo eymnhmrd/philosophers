@@ -6,7 +6,7 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 04:15:18 by ahamrad           #+#    #+#             */
-/*   Updated: 2023/10/11 18:24:32 by ahamrad          ###   ########.fr       */
+/*   Updated: 2023/10/12 02:47:59 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 # include <unistd.h>
 # include <sys/time.h>
 # include <pthread.h>
-# include <limits.h>
+
+# define MSG_ERROR "Invalid number of times each philosopher must eat\n"
 
 # define FORK "%ld ms %d has taken a fork\n"
 # define EAT "%ld ms %d is eating\n"
@@ -36,7 +37,7 @@ typedef struct s_vars
 	int					satisfaction;
 	pthread_mutex_t		mt_print;
 	size_t				start_time;
-	struct s_philo		*philo_ptr;	
+	struct s_philo		*philo_ptr;
 }t_vars;
 typedef struct s_philo
 {
@@ -49,17 +50,15 @@ typedef struct s_philo
 	t_vars			*vars_ptr;
 }t_philo;
 
-void	init_vars(t_vars *var, char **argv);
 int		init_philos(t_vars *var, char **argv);
-
-void	routine(t_philo *philo);
+int		init_vars(t_vars *var, char **argv);
 
 int		ft_check_arguments(char **argv);
 
+void	routine(t_philo *philo);
 size_t	get_current_time(void);
 int		ft_usleep(size_t ms);
 
-int		ft_strlen(char *s);
 long	ft_atoi(char *str);
 
 #endif 

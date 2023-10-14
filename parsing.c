@@ -6,7 +6,7 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 22:18:55 by ahamrad           #+#    #+#             */
-/*   Updated: 2023/10/11 18:48:12 by ahamrad          ###   ########.fr       */
+/*   Updated: 2023/10/13 03:44:03 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_check_number(char *number)
 
 int	ft_check_arguments(char **argv)
 {
-	if (ft_atoi(argv[1]) > 200 || ft_atoi(argv[1]) <= 0 
+	if (ft_atoi(argv[1]) >= 200 || ft_atoi(argv[1]) <= 0 
 		|| ft_check_number(argv[1]) == 1)
 		return (write(2, "Invalid number of philosophers\n", 28), 1);
 	if (ft_atoi(argv[2]) < 60 || ft_check_number(argv[2]) == 1)

@@ -6,7 +6,7 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 05:26:53 by ahamrad           #+#    #+#             */
-/*   Updated: 2023/10/14 05:31:39 by ahamrad          ###   ########.fr       */
+/*   Updated: 2023/10/15 04:21:44 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,11 @@ void	unlock_forks(t_philo *philo)
 void	routine(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
-		ft_usleep(200);
+		ft_usleep(50);
+	pthread_mutex_lock(&philo->vars_ptr->stop_mt);
 	while (philo->vars_ptr->stop)
 	{
+		pthread_mutex_unlock(&philo->vars_ptr->stop_mt);
 		lock_forks(philo);
 		philo_print(philo, EAT);
 		ft_usleep(philo->vars_ptr->time_to_eat);
@@ -55,5 +57,6 @@ void	routine(t_philo *philo)
 		philo_print(philo, SLEEP);
 		ft_usleep(philo->vars_ptr->time_to_sleep);
 		philo_print(philo, THINK);
+		pthread_mutex_lock(&philo->vars_ptr->stop_mt);
 	}
 }

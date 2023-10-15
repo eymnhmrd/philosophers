@@ -6,7 +6,7 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:01:20 by ahamrad           #+#    #+#             */
-/*   Updated: 2023/10/14 03:29:51 by ahamrad          ###   ########.fr       */
+/*   Updated: 2023/10/15 03:56:20 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	init_vars(t_vars *var, char **argv)
 	if (!var->philo_ptr)
 		return (1);
 	if (pthread_mutex_init(&var->mt_print, NULL) != 0 
-		|| pthread_mutex_init(&var->satisfaction_mt, NULL) != 0)
+		|| pthread_mutex_init(&var->satisfaction_mt, NULL) != 0 
+		|| pthread_mutex_init(&var->stop_mt, NULL) != 0)
 		return (1);
 	return (0);
 }
@@ -40,10 +41,10 @@ int	init_philos(t_vars *var, char **argv)
 {
 	int		i;
 
-	i = 0;
+	i = -1;
 	if (init_vars(var, argv) == 1)
 		return (1);
-	while (i < var->num_philos)
+	while (++i < var->num_philos)
 	{
 		var->philo_ptr[i].id = i + 1;
 		var->philo_ptr[i].l_fork = NULL;
@@ -61,7 +62,6 @@ int	init_philos(t_vars *var, char **argv)
 			return (1);
 		if (pthread_detach(var->philo_ptr[i].t_id) != 0)
 			return (1);
-		i++;
 	}
 	return (0);
 }

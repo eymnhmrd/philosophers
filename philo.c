@@ -6,7 +6,7 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 04:18:57 by ahamrad           #+#    #+#             */
-/*   Updated: 2023/10/14 05:40:11 by ahamrad          ###   ########.fr       */
+/*   Updated: 2023/10/15 04:25:32 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 		return (1);
 	if (init_philos(&var, argv) == 1)
 		return (1);
-	ft_check_death(&var);
+	ft_check_death(&var, 0, 0);
 	ft_usleep(100);
 	free_mutexes(&var);
 	return (0);

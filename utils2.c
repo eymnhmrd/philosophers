@@ -6,7 +6,7 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:13:25 by ahamrad           #+#    #+#             */
-/*   Updated: 2023/10/14 05:31:25 by ahamrad          ###   ########.fr       */
+/*   Updated: 2023/10/15 04:02:40 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_usleep(long long ms)
 
 void	free_mutexes(t_vars *var)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	pthread_mutex_destroy(&var->mt_print);
@@ -41,25 +41,30 @@ void	free_mutexes(t_vars *var)
 		pthread_mutex_destroy(&var->philo_ptr[i].r_fork);
 		i++;
 	}
-	// free(var->philo_ptr);
+	free(var->philo_ptr);
 }
 
-int		ft_check_death(t_vars *var)
+void	supply_check(t_vars *var, int i)
 {
-	int			i;
-	long long	diff;
+	pthread_mutex_lock(&var->mt_print);
+	pthread_mutex_lock(&var->stop_mt);
+	var->stop = 0;
+	pthread_mutex_unlock(&var->stop_mt);
+	printf("%lld ms %d died\n", 
+		get_current_time() - var->start_time, var->philo_ptr[i].id);
+}
 
-	i = 0;
+int	ft_check_death(t_vars *var, int i, long long diff)
+{
 	ft_usleep(100);
 	while (1)
 	{
 		pthread_mutex_lock(&var->philo_ptr[i].meal_mt);
-		diff = (get_current_time() - var->start_time) - var->philo_ptr[i].last_meal;
+		diff = (get_current_time() - var->start_time)
+			- var->philo_ptr[i].last_meal;
 		if (diff >= var->time_to_die)
 		{
-			pthread_mutex_lock(&var->mt_print);
-			var->stop = 0;
-			printf("%lld ms %d died\n", get_current_time() - var->start_time, var->philo_ptr[i].id);
+			supply_check(var, i);
 			return (1);
 		}
 		pthread_mutex_unlock(&var->philo_ptr[i].meal_mt);
@@ -74,8 +79,6 @@ int		ft_check_death(t_vars *var)
 		i++;
 		if (i == var->num_philos)
 			i = 0;
-		// usleep(100);
 	}
 	return (0);
 }
-
